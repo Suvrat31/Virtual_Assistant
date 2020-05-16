@@ -3,7 +3,9 @@ from functionality import functionality
 from analysis import *
 from speech_recog import speech_recog
 from training import *
+from all_about_usr_defined_functions import *
 if __name__ == "__main__":
+    import json
     intro()
     otpion1=input("Do you want to see the current functionality? Yes or No ")
     if(otpion1.lower()=="yes"):
@@ -19,12 +21,17 @@ if __name__ == "__main__":
                 command=speech_recog().lower()
                 break
             elif(option=="3"):
-            	usr_fun()
-            	break
+                define_usr_fun()
+                continue
             else:
                 command=input("What do you want to do? ")
                 break
-
+        with open('usr_triggers.json', 'r') as fp:
+            usr_triggers= json.load(fp)
+        if(command in usr_triggers):
+            run_usr_fun(command)
+            print(hello)
+            continue
         command,command_sentence=run_classifier(command)
         analysis(command,command_sentence)
         temp_var_1=input("Do you want to continue? yes or no").lower()
