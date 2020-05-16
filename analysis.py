@@ -134,21 +134,9 @@ def youtube(command):
            #  weather forecast in your city (e.g. weather in London)
            # please create and use your own API it is free
 def google(command):
-    from selenium import webdriver
-    import re
-    from selenium.webdriver.common.keys import Keys
-    if 'open google and search' in command:
-        reg_ex = re.search('open google and search (.*)', command)
-        search_for = command.split("search",1)[1]
-        url = 'https://www.google.com/'
-        if reg_ex:
-            subgoogle = reg_ex.group(1)
-            url = url + 'r/' + subgoogle
-        driver = webdriver.Firefox(executable_path='/path/to/geckodriver') #depends which web browser you are using
-        driver.get('http://www.google.com')
-        search = driver.find_element_by_name('q') # finds search
-        search.send_keys(str(search_for)) #sends search keys 
-        search.send_keys(Keys.RETURN) #hits enter
+    import webbrowser
+    url="https://www.google.com/search?q="+command
+    webbrowser.open(url)
 def reboot():
     import os
     os.system("reboot")
@@ -162,12 +150,14 @@ def ip():
     import os
     os.system("ifconfig")
 def weather():
-    import os
-    
+    import webbrowser
+    string1="weather today"
+    url="https://www.google.com/search?q="+string1
+    webbrowser.open(url)
 def compile_prog():
     #do something
     print(1)
 def update():
     import os
-    os.system("sudo apt get update")
+    os.system("sudo apt-get update")
     
