@@ -30,7 +30,6 @@ if __name__ == "__main__":
             usr_triggers= json.load(fp)
         if(command in usr_triggers):
             run_usr_fun(command)
-            print(hello)
             continue
         command,command_sentence=run_classifier(command)
         analysis(command,command_sentence)

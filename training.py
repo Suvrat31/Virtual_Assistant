@@ -15,8 +15,8 @@ with open('data.json', 'r') as fp:
 
 
 
-corpus_words = {}
-class_words = {}
+corpus_words = {} #words accross all classes and their counts
+class_words = {} #dictionary of classes where values are the word stems for this class
 # turn a list into a set (of unique items) and then a list again (this removes duplicates)
 classes = list(set([a['class'] for a in training_data]))
 for c in classes:
